@@ -1,0 +1,13 @@
+{
+	"compilerOptions": {
+		"target": "es6",
+		"module": "commonjs",
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"outDir": "./dist",
+		"rootDir": "./"
+	},
+	"include": ["contracts/**/*", "test/**/*"],
+	"exclude": ["node_modules"]
+}

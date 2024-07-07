@@ -1,0 +1,28 @@
+{
+	"name": "seph-slot-machine",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "mocha -r ts-node/register test/**/*.ts",
+		"deploy": "ts-node ./deploy.ts"
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"dotenv": "^16.4.5",
+		"ethers": "^6.13.1",
+		"ganache": "^7.9.2",
+		"mocha": "^10.5.2",
+		"solc": "0.8.19",
+		"web3": "^4.10.0"
+	},
+	"devDependencies": {
+		"@types/mocha": "^10.0.7",
+		"@types/node": "^20.14.9",
+		"@types/web3": "^1.2.2",
+		"hardhat": "^2.22.6",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.3"
+	}
+}
