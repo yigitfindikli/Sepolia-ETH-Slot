@@ -1,32 +1,34 @@
-import { ethers, InfuraProvider, Wallet, Mnemonic } from "ethers";
-import { abi, evm } from "./compile";
 import "dotenv/config";
+import Web3 from "web3";
+import { abi, evm } from "./compile";
 
-// Initialize the provider with Infura
-const provider = new InfuraProvider(
-	"sepolia",
-	process.env.INFURA_PRIVATE_KEY || ""
-);
+// Ensure environment variables are defined
+const privateKey = process.env.SIGNER_PRIVATE_KEY;
+const infuraUrl = process.env.INFURA_API_KEY_URL;
 
-// Define the mnemonic and create a wallet
-const mnemonic = process.env.MNEMONIC || "";
-const wallet = Wallet.fromPhrase(mnemonic).connect(provider);
+if (!privateKey || !infuraUrl) {
+	throw new Error("Please set MNEMONIC and INFURA_KEY_URL in your .env file");
+}
+
+const provider = new Web3.providers.HttpProvider(infuraUrl);
+
+// Create a new instance of Web3 with the provider
+const web3 = new Web3(provider);
 
 const deploy = async () => {
-	console.log(wallet);
-	console.log("Attempting to deploy from account", wallet.address);
+	const signer = web3.eth.accounts.privateKeyToAccount(privateKey);
+
+	web3.eth.accounts.wallet.add(signer);
 
 	const bytecode = evm.bytecode.object;
+	const accounts = await web3.eth.getAccounts();
+	console.log(accounts);
 
-	const factory = new ethers.ContractFactory(abi, bytecode, wallet);
+	const result = await new web3.eth.Contract(abi)
+		.deploy({ data: bytecode })
+		.send({ gas: "1000000", from: signer.address });
 
-	const contract = await factory.deploy("Hi there!", {
-		gasLimit: 1000000
-	});
-
-	const address = contract.getAddress();
-
-	console.log("Contract deployed to", address);
+	console.log("Contract deployed to", result.options.address);
 };
 
 deploy().catch((error) => {

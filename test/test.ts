@@ -1,7 +1,6 @@
 import assert from "assert";
 import ganache from "ganache";
 import Web3 from "web3";
-import { AbiItem } from "web3-utils";
 import { abi, evm } from "../compile";
 import { Contract } from "web3-eth-contract";
 
@@ -12,7 +11,7 @@ let slotMachine: Contract<any>;
 
 beforeEach(async () => {
 	accounts = await web3.eth.getAccounts();
-	slotMachine = await new web3.eth.Contract(abi as AbiItem[])
+	slotMachine = await new web3.eth.Contract(abi)
 		.deploy({ data: evm.bytecode.object })
 		.send({ from: accounts[0], gas: "1000000" });
 });

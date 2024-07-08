@@ -3,7 +3,7 @@ import fs from "fs";
 
 const solc = require("solc");
 
-const slotPath = path.resolve(__dirname, "../contracts", "Slot.sol");
+const slotPath = path.resolve(__dirname, "contracts", "Slot.sol");
 
 const source = fs.readFileSync(slotPath, "utf8");
 
