@@ -1,7 +1,7 @@
 import assert from "assert";
 import ganache from "ganache";
 import Web3 from "web3";
-import { abi, evm } from "../compile";
+import { abi, evm } from "../migrations/compile";
 import { Contract } from "web3-eth-contract";
 
 const web3 = new Web3(ganache.provider());
