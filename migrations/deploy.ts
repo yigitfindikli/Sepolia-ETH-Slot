@@ -2,7 +2,6 @@ import "dotenv/config";
 import Web3 from "web3";
 import { abi, evm } from "./compile";
 
-// Ensure environment variables are defined
 const privateKey = process.env.SIGNER_PRIVATE_KEY;
 const infuraUrl = process.env.INFURA_API_KEY_URL;
 
@@ -14,7 +13,6 @@ if (!privateKey || !infuraUrl) {
 
 const provider = new Web3.providers.HttpProvider(infuraUrl);
 
-// Create a new instance of Web3 with the provider
 const web3 = new Web3(provider);
 
 export const deploy = async () => {
