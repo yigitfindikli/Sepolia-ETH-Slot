@@ -19,6 +19,7 @@ contract Slot {
         randomNumber = uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender))) % 100;
         
         uint256 winnings = calculateWinnings(randomNumber);
+        
         if (winnings > 0) {
             payable(msg.sender).transfer(winnings);
         }
