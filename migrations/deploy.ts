@@ -7,7 +7,9 @@ const privateKey = process.env.SIGNER_PRIVATE_KEY;
 const infuraUrl = process.env.INFURA_API_KEY_URL;
 
 if (!privateKey || !infuraUrl) {
-	throw new Error("Please set MNEMONIC and INFURA_KEY_URL in your .env file");
+	throw new Error(
+		"Please set PRIVATE_KEY and INFURA_KEY_URL in your .env file"
+	);
 }
 
 const provider = new Web3.providers.HttpProvider(infuraUrl);
@@ -15,7 +17,7 @@ const provider = new Web3.providers.HttpProvider(infuraUrl);
 // Create a new instance of Web3 with the provider
 const web3 = new Web3(provider);
 
-const deploy = async () => {
+export const deploy = async () => {
 	const signer = web3.eth.accounts.privateKeyToAccount(privateKey);
 
 	web3.eth.accounts.wallet.add(signer);
@@ -31,6 +33,9 @@ const deploy = async () => {
 	console.log("Contract deployed to", result.options.address);
 };
 
-deploy().catch((error) => {
-	console.error("Error deploying contract:", error);
-});
+if (require.main === module) {
+	console.log("hey?");
+	deploy().catch((error) => {
+		console.error("Error deploying contract:", error);
+	});
+}

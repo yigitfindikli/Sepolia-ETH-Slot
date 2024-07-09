@@ -4,6 +4,7 @@
 	"description": "",
 	"main": "index.js",
 	"scripts": {
+		"start": "ts-node index.ts",
 		"test": "mocha -r ts-node/register test/**/*.ts",
 		"deploy": "ts-node ./migrations/deploy.ts"
 	},
@@ -14,12 +15,14 @@
 		"ethers": "^6.13.1",
 		"ganache": "^7.9.2",
 		"mocha": "^10.5.2",
+		"prompt-sync": "^4.2.0",
 		"solc": "0.8.19",
 		"web3": "^4.10.0"
 	},
 	"devDependencies": {
 		"@types/mocha": "^10.0.7",
 		"@types/node": "^20.14.9",
+		"@types/prompt-sync": "^4.2.3",
 		"ts-node": "^10.9.2",
 		"typescript": "^5.5.3"
 	}
