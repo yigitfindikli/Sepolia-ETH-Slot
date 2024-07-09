@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.19;
 
 contract Slot {
@@ -14,7 +16,7 @@ contract Slot {
     function spin() public payable {
         require(msg.value == BET_AMOUNT, "Bet amount must be 0.01 Ether");
         
-        randomNumber = uint256(keccak256(abi.encodePacked(block.timestamp, block.difficulty, msg.sender))) % 100;
+        randomNumber = uint256(keccak256(abi.encodePacked(block.timestamp, block.prevrandao, msg.sender))) % 100;
         
         uint256 winnings = calculateWinnings(randomNumber);
         if (winnings > 0) {
