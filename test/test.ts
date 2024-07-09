@@ -37,7 +37,7 @@ describe("SlotMachine", () => {
 		);
 
 		const newBalance = await web3.eth.getBalance(accounts[0]);
-		assert.ok(initialBalance > newBalance); // Due to gas cost
+		assert.ok(initialBalance > newBalance);
 	});
 
 	it("only allows the owner to withdraw", async () => {
