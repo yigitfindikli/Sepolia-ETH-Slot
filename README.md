@@ -1,4 +1,4 @@
-# Seph Slot Machine
+# Sepolia-ETH-Slot
 
 This project is a smart contract-based slot machine implemented with Solidity, Web3.js, and TypeScript (Strict). It allows users to deploy the contract, spin the slot machine, and withdraw winnings. This project is created for boilerplate purposes and should not be used directly for production.
 
