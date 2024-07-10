@@ -5,8 +5,9 @@
 	"main": "index.js",
 	"scripts": {
 		"start": "ts-node index.ts",
-		"test": "mocha -r ts-node/register test/**/*.ts",
-		"deploy": "ts-node ./migrations/deploy.ts"
+		"compile": "ts-node ./migrations/compile.ts",
+		"deploy": "ts-node ./migrations/deploy.ts",
+		"test": "mocha -r ts-node/register test/**/*.ts"
 	},
 	"author": "",
 	"license": "ISC",
